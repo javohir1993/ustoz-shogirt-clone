@@ -2,7 +2,7 @@ var count = 0;
 
 // E'lonlarni saqlab boradigan array:
 var posters = [];
-var ibrohim = `odam`
+var odam = `Ibrohim`
 
 // DOM
 // var elBody = $_('.body');

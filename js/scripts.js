@@ -54,7 +54,7 @@ elNewPosterForm.addEventListener('submit', function(evt) {
   var newRegionSelectValue = elNewRegionSelect.value;
   var newWorkHoursSelectValue = elNewWorkHoursSelect.value;
 
-  posters.push({
+  posters.unshift({
     title: newPosterTitleInputValue,
     company_name: newCompanyNameInputValue,
     technologies: newTechnologiesInputValue,
@@ -67,7 +67,9 @@ elNewPosterForm.addEventListener('submit', function(evt) {
     work_hours: newWorkHoursSelectValue
   });
 
+  elResultsList.innerHTML = '';
   var newPosterFragment = document.createDocumentFragment();
+
 
   posters.forEach(function(poster) {
 
@@ -82,7 +84,29 @@ elNewPosterForm.addEventListener('submit', function(evt) {
   });
 
   elResultsList.appendChild(newPosterFragment);
+
+  elNewPosterTitleInput.value = '';
+  elNewCompanyNameInput.value = '';
+  elNewTechnologiesInput.value = '';
+  elNewTelegramInput.value = '';
+  elNewPhoneInput.value = '';
+  elNewResponsiblePersonInput.value = '';
+  elNewMinSalaryInput.value = '';
+  elNewMoreInput.value = '';
+  elNewRegionSelect.value = '';
+  elNewWorkHoursSelect.value = '';
+
+  alert(`E'loningiz muvaffaqiyatli qo'shildi. Bosh sahifaga o'tib ko'rishingiz mumkin🥳`);
 });
+
+
+// Bosh sahifadagi har bir e'longa o'ziga mos bo'lgan ma'lumotlarni modalga chiqarish:
+
+// elResultsList.addEventListener('submit', function(evt) {
+//   evt.preventDefault();
+
+
+// }
 
 
 

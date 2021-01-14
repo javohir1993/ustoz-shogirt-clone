@@ -58,17 +58,17 @@
     <section>
       <div class="container">
         <ul class="js-results-list m-0 p-0 list-unstyled d-flex justify-content-center flex-wrap">
-          <!-- <li class="w-25 p-3 mr-5 mb-5 border border-dark">
+          <li class="w-25 p-3 mr-5 mb-5 border border-dark js-poster-item">
             <div class="d-flex justify-content-between mb-2">
               <span>N soat oldin</span>
-              <time datetime="">9:00-18:00</time>
+              <time class="js-poster-item-time" datetime="">9:00-18:00</time>
             </div>
             <a class="" href="#staticBackdropp" data-toggle="modal" data-target="">
-              <h2>E'lon nomi</h2>
+              <h2 class="js-poster-item-title">E'lon nomi</h2>
             </a>
-            <p>Bekorchilar LTD</p>
-            <p class="m-0">Joylashuv</p>
-          </li> -->
+            <p class="js-poster-item-company-name">Bekorchilar LTD</p>
+            <p class="m-0 js-poster-item-region js-poster-item-region">Joylashuv</p>
+          </li>
         </ul>
       </div>
     </section>
@@ -118,7 +118,7 @@
               <option value="Moslashuvchan">Moslashuvchan</option>
             </select>
             <input required class="form-control mb-3 js-new-poster-salary" type="text" name="text" placeholder="Minimal maosh">
-            <input required class="form-control js-new-poster-more-info" type="text" name="text" placeholder="Batafsil">
+            <textarea class="form-control js-new-poster-more-info">Batafsil</textarea>
             <div class="modal-footer d-flex justify-content-center">
               <button type="submit" class="btn btn-primary">Yuborish</button>
             </div>

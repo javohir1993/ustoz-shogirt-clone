@@ -1,28 +1,41 @@
-var count = 0;
+var count = Number(localStorage.getItem(`count`)) || 0;
 
-// E'lonlarni saqlab boradigan array:
-var posters = [];
-var odam = `Ibrohim`
 
 // DOM
-// var elBody = $_('.body');
 
-// // LightDarkToggle button ni topib kelamiz:
-// var elLightDarkToggleButton = $_('.toggle-button')
 
-// // Button ga quloq solamiz va button bosilganda Body ga dark class ni qo'shamiz yoki olib tashlaymiz (toggle yordamida):
-// elLightDarkToggleButton.addEventListener('click', function(){
-//   elBody.classList.toggle('dark');
-// });
+
+var elNewPosterTemplate = $_('.js-poster-item-template').content;
+var elResultsList = $_('.js-results-list');
+
+// E'lonlarni saqlab boradigan array:
+var posters = JSON.parse(localStorage.getItem(`posters`)) || [];
+
+var displayPosters = function (posts = posters) {
+  var newPostersFragment = document.createDocumentFragment();
+  posts.forEach(function(poster) {
+
+    var elNewPosterItem = elNewPosterTemplate.cloneNode(true);
+
+    $_('.js-poster-item-title', elNewPosterItem).textContent = poster.title;
+    $_('.js-poster-item-title', elNewPosterItem).dataset.id = poster.id;
+    $_('.js-poster-item-company-name', elNewPosterItem).textContent = poster.company_name;
+    $_('.js-poster-item-time', elNewPosterItem).textContent = poster.work_hours;
+    $_('.js-poster-item-region', elNewPosterItem).textContent = poster.region;
+
+    newPostersFragment.appendChild(elNewPosterItem);
+  });
+
+  elResultsList.appendChild(newPostersFragment);
+};
+
+displayPosters();
+localStorage.setItem('posters', JSON.stringify(posters));
 
 
 // Yangi e'lon qo'shish modali:
 
 var elNewPosterForm = $_('.js-new-poster-form');
-
-var elResultsList = $_('.js-results-list');
-
-var elNewPosterTemplate = $_('.js-poster-item-template').content;
 
 if (elNewPosterForm) {
   var elNewPosterTitleInput = $_('.js-new-poster-title', elNewPosterForm);
@@ -45,6 +58,7 @@ elNewPosterForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
   // console.log(`submit bo'ldi`);
   count++;
+  localStorage.setItem(`count`, JSON.stringify(count))
 
   var newPosterTitleInputValue = elNewPosterTitleInput.value;
   var newCompanyNameInputValue = elNewCompanyNameInput.value;
@@ -70,29 +84,10 @@ elNewPosterForm.addEventListener('submit', function(evt) {
     region: newRegionSelectValue,
     work_hours: newWorkHoursSelectValue
   });
-
-  // Local storage boshlanishi
-
-
+  localStorage.setItem(`posters`, JSON.stringify(posters))
 
   elResultsList.innerHTML = '';
-  var newPosterFragment = document.createDocumentFragment();
-
-
-  posters.forEach(function(poster) {
-
-    var elNewPosterItem = elNewPosterTemplate.cloneNode(true);
-
-    $_('.js-poster-item-title', elNewPosterItem).textContent = poster.title;
-    $_('.js-poster-item-title', elNewPosterItem).dataset.id = poster.id;
-    $_('.js-poster-item-company-name', elNewPosterItem).textContent = poster.company_name;
-    $_('.js-poster-item-time', elNewPosterItem).textContent = poster.work_hours;
-    $_('.js-poster-item-region', elNewPosterItem).textContent = poster.region;
-
-    newPosterFragment.appendChild(elNewPosterItem);
-  });
-
-  elResultsList.appendChild(newPosterFragment);
+  displayPosters();
 
   elNewPosterTitleInput.value = '';
   elNewCompanyNameInput.value = '';

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Ustoz Shogird Clone</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="body">
+
+  <!-- <button class="toggle-button p-5" type="button"></button> -->
+
+  <header class="site-header bg-primary">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between pt-3 mb-4">
+        <a class="d-inline-block" href="#">
+          <img class="d-block" src="img/devjobs.svg" alt="site logo" width="115" height="32">
+        </a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+          E'lon berish
+        </button>
+      </div>
+      <form class="form-group pb-5 d-flex" action="https://echo.htmlacademy.ru">
+        <input required class="form-control mr-2" type="text" name="technologies" placeholder="Texnologiyalar" required>
+        <select class="form-control mr-2">
+          <option value="" disabled selected>Hudud</option>
+          <option value="Toshkent">Toshkent shahri</option>
+          <option value="ToshkentViloyati">Toshkent viloyati</option>
+          <option value="Andijon">Andijon viloyati</option>
+          <option value="Namangan">Namangan viloyati</option>
+          <option value="Farg'ona">Farg'ona viloyati</option>
+          <option value="Sirdaryo">Sirdaryo viloyati</option>
+          <option value="Jizzah">Jizzax viloyati</option>
+          <option value="Samarqand">Samarqand viloyati</option>
+          <option value="Navoiy">Navoiy viloyati</option>
+          <option value="Buxoro">Buxoro viloyati</option>
+          <option value="Xorazm">Xorazm viloyati</option>
+          <option value="Qashqadaryo">Qashqadaryo viloyati</option>
+          <option value="Surxondaryo">Surxondaryo viloyati</option>
+          <option value="Qoraqalpog'iston">Qoraqalpog'iston Respublikasi</option>
+        </select>
+        <select class="form-control mr-2" name="" id="">
+          <option value="" disabled selected>Ish vaqti</option>
+          <option value="">9:00-18:00</option>
+          <option value="">9:00-14:00</option>
+          <option value="">13:00-18:00</option>
+          <option value="">Moslashuvchan</option>
+        </select>
+        <input required class="form-control mr-2" type="text" name="text" placeholder="Minimal maosh" required>
+        <button class="btn btn-success">Qidirish</button>
+      </form>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="sr-only">E'lonlar</h1>
+    <section>
+      <div class="container">
+        <ul class="js-results-list m-0 p-0 list-unstyled d-flex justify-content-center flex-wrap">
+          <!-- <li class="w-25 p-3 mr-5 mb-5 border border-dark">
+            <div class="d-flex justify-content-between mb-2">
+              <span>N soat oldin</span>
+              <time datetime="">9:00-18:00</time>
+            </div>
+            <a class="" href="#staticBackdropp" data-toggle="modal" data-target="">
+              <h2>E'lon nomi</h2>
+            </a>
+            <p>Bekorchilar LTD</p>
+            <p class="m-0">Joylashuv</p>
+          </li> -->
+        </ul>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Yangi e'lon</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form-group mb-0 js-new-poster-form">
+            <input required class="form-control mb-3 js-new-poster-title" type="text" name="text" placeholder="Sarlavha">
+            <input required class="form-control mb-3 js-new-poster-company-name" type="text" name="name" placeholder="Kompaniya nomi">
+            <input required class="form-control mb-3 js-new-poster-technology" type="text" name="technologies" placeholder="Texnologiyalar">
+            <input required class="form-control mb-3 js-new-poster-telegram" type="text" name="telegram" placeholder="Telegram">
+            <input required class="form-control mb-3 js-new-poster-phone-number" type="number" name="number" placeholder="Telefon raqami">
+            <select class="form-control mb-3 js-new-poster-region-select" name="" id="">
+              <option value="" disabled selected>Hudud</option>
+              <option value="Toshkent">Toshkent shahri</option>
+              <option value="Toshkent">Toshkent viloyati</option>
+              <option value="Andijon">Andijon viloyati</option>
+              <option value="Namangan">Namangan viloyati</option>
+              <option value="Farg'ona">Farg'ona viloyati</option>
+              <option value="Sirdaryo">Sirdaryo viloyati</option>
+              <option value="Jizzah">Jizzax viloyati</option>
+              <option value="Samarqand">Samarqand viloyati</option>
+              <option value="Navoiy">Navoiy viloyati</option>
+              <option value="Buxoro">Buxoro viloyati</option>
+              <option value="Xorazm">Xorazm viloyati</option>
+              <option value="Qashqadaryo">Qashqadaryo viloyati</option>
+              <option value="Surxondaryo">Surxondaryo viloyati</option>
+              <option value="Qoraqalpog'iston">Qoraqalpog'iston Respublikasi</option>
+            </select>
+            <input required class="form-control mb-3 js-new-poster-responsibly-person" type="text" name="text" placeholder="Mas'ul">
+            <select class="form-control mb-3 js-new-poster-work-hours-select" name="" id="">
+              <option value="all" disabled selected>Ish vaqti</option>
+              <option value="9:00-18:00">9:00-18:00</option>
+              <option value="9:00-14:00">9:00-14:00</option>
+              <option value="13:00-18:00">13:00-18:00</option>
+              <option value="Moslashuvchan">Moslashuvchan</option>
+            </select>
+            <input required class="form-control mb-3 js-new-poster-salary" type="text" name="text" placeholder="Minimal maosh">
+            <input required class="form-control js-new-poster-more-info" type="text" name="text" placeholder="Batafsil">
+            <div class="modal-footer d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary">Yuborish</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdropp" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title h1" id="staticBackdropLabel">E'lon nomi</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="w-50 d-flex justify-content-between">
+            <p>Bekorchilar LTD</p>
+            <p>Toshkent</p>
+          </div>
+          <p>HTML,CSS,Bootstrap,React,Javascript</p>
+          <div class="mb-3">
+            <a class="mr-5" href="#" target="_blank">Telegram link</a>
+            <a href="tel:777777777">Telefon raqami</a>
+          </div>
+          <div class="w-50 d-flex justify-content-between">
+            <p>Mas'ul</p>
+            <time>9:00-18:00</time>
+          </div>
+          <p class="mb-4">5600so'm</p>
+          <hr>
+          <div>
+            <h3>Batafsil</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium dignissimos quisquam id esse! Dolore, ipsa iure pariatur doloribus nesciunt animi culpa odio beatae reprehenderit ad quisquam, alias quia quo facere.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Template Results -->
+
+  <template class="js-poster-item-template">
+    <li class="w-25 p-3 mr-5 mb-5 border border-dark">
+      <div class="d-flex justify-content-between mb-2">
+        <span>N soat oldin</span>
+        <time class="js-poster-item-time" datetime="">9:00-18:00</time>
+      </div>
+      <a class="" href="#staticBackdropp" data-toggle="modal" data-target="">
+        <h2 class="js-poster-item-title">E'lon nomi</h2>
+      </a>
+      <p class="js-poster-item-company-name">Bekorchilar LTD</p>
+      <p class="m-0 js-poster-item-region js-poster-item-region">Joylashuv</p>
+    </li>
+  </template>
+
+
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>

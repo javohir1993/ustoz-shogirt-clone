@@ -1,6 +1,8 @@
+var count = 0;
 
 // E'lonlarni saqlab boradigan array:
 var posters = [];
+var ibrohim = `odam`
 
 // DOM
 // var elBody = $_('.body');
@@ -42,6 +44,7 @@ if (elNewPosterForm) {
 elNewPosterForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
   // console.log(`submit bo'ldi`);
+  count++;
 
   var newPosterTitleInputValue = elNewPosterTitleInput.value;
   var newCompanyNameInputValue = elNewCompanyNameInput.value;
@@ -55,6 +58,7 @@ elNewPosterForm.addEventListener('submit', function(evt) {
   var newWorkHoursSelectValue = elNewWorkHoursSelect.value;
 
   posters.unshift({
+    id: count,
     title: newPosterTitleInputValue,
     company_name: newCompanyNameInputValue,
     technologies: newTechnologiesInputValue,
@@ -67,6 +71,10 @@ elNewPosterForm.addEventListener('submit', function(evt) {
     work_hours: newWorkHoursSelectValue
   });
 
+  // Local storage boshlanishi
+
+
+
   elResultsList.innerHTML = '';
   var newPosterFragment = document.createDocumentFragment();
 
@@ -76,6 +84,7 @@ elNewPosterForm.addEventListener('submit', function(evt) {
     var elNewPosterItem = elNewPosterTemplate.cloneNode(true);
 
     $_('.js-poster-item-title', elNewPosterItem).textContent = poster.title;
+    $_('.js-poster-item-title', elNewPosterItem).dataset.id = poster.id;
     $_('.js-poster-item-company-name', elNewPosterItem).textContent = poster.company_name;
     $_('.js-poster-item-time', elNewPosterItem).textContent = poster.work_hours;
     $_('.js-poster-item-region', elNewPosterItem).textContent = poster.region;
@@ -102,12 +111,52 @@ elNewPosterForm.addEventListener('submit', function(evt) {
 
 // Bosh sahifadagi har bir e'longa o'ziga mos bo'lgan ma'lumotlarni modalga chiqarish:
 
-// elResultsList.addEventListener('submit', function(evt) {
-//   evt.preventDefault();
+elResultsList.addEventListener('click', function(evt){
+  // console.log(evt.target)
+
+  if (evt.target.matches('.js-poster-item-title')) {
+    // console.log(evt.target.textContent);
+    // console.log(evt.target.dataset.id);
+    var posterIdItem = posters.find(function (poster) {
+      // console.log(poster);
+      return Number(evt.target.dataset.id) === poster.id;
+    })
+    // console.log(posterIdItem);
+    var showMoreInfoItemPoster = $_('.js-item-poster-modal');
+
+    $_('.js-item-poster-heading', showMoreInfoItemPoster).textContent = posterIdItem.title;
+    $_('.js-item-poster-firm-name', showMoreInfoItemPoster).textContent = posterIdItem.company_name;
+    $_('.js-item-poster-region-more', showMoreInfoItemPoster).textContent = posterIdItem.region;
+    $_('.js-item-poster-technologies-more', showMoreInfoItemPoster).textContent = posterIdItem.technologies;
+    $_('.js-item-poster-telegram-more', showMoreInfoItemPoster).textContent = posterIdItem.telegram;
+    $_('.js-item-poster-telegram-more', showMoreInfoItemPoster).href = `https://telegram.com/${posterIdItem.telegram}`;
+    $_('.js-item-poster-phone-number-more', showMoreInfoItemPoster).textContent = posterIdItem.phone_number;
+    $_('.js-item-poster-phone-number-more', showMoreInfoItemPoster).href = `tel:${posterIdItem.phone_number}`;
+    $_('.js-item-poster-responsibly-person-more', showMoreInfoItemPoster).textContent = posterIdItem.responsible_person;
+    $_('.js-item-poster-work-time', showMoreInfoItemPoster).textContent = posterIdItem.work_hours;
+    $_('.js-item-poster-salary-more', showMoreInfoItemPoster).textContent = posterIdItem.min_salary;
+    $_('.js-item-poster-more', showMoreInfoItemPoster).textContent = posterIdItem.more_info;
+  }
+});
 
 
-// }
 
+// var bookmarkedMovies = JSON.parse(localStorage.getItem('bookmarkedMovies')) || [];
+
+// var updateLocalBookmarks = function () {
+//   localStorage.setItem('bookmarkedMovies', JSON.stringify(bookmarkedMovies));
+// };
+
+// var addToBookmarks = function (movie) {
+//   bookmarkedMovies.push(movie);
+//   updateLocalBookmarks();
+// };
+
+// var removeFromBookmarks = function (index) {
+//   // bu yerda findIndex bilan indeksi topilgani yaxshi. ID qabul qilib oladi
+//   bookmarkedMovies.splice(index, 1);
+//   updateLocalBookmarks();
+// };
 
 
 

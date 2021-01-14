@@ -58,17 +58,6 @@
     <section>
       <div class="container">
         <ul class="js-results-list m-0 p-0 list-unstyled d-flex justify-content-center flex-wrap">
-          <li class="w-25 p-3 mr-5 mb-5 border border-dark js-poster-item">
-            <div class="d-flex justify-content-between mb-2">
-              <span>N soat oldin</span>
-              <time class="js-poster-item-time" datetime="">9:00-18:00</time>
-            </div>
-            <a class="" href="#staticBackdropp" data-toggle="modal" data-target="">
-              <h2 class="js-poster-item-title">E'lon nomi</h2>
-            </a>
-            <p class="js-poster-item-company-name">Bekorchilar LTD</p>
-            <p class="m-0 js-poster-item-region js-poster-item-region">Joylashuv</p>
-          </li>
         </ul>
       </div>
     </section>
@@ -109,7 +98,7 @@
               <option value="Surxondaryo">Surxondaryo viloyati</option>
               <option value="Qoraqalpog'iston">Qoraqalpog'iston Respublikasi</option>
             </select>
-            <input required class="form-control mb-3 js-new-poster-responsibly-person" type="text" name="text" placeholder="Mas'ul">
+            <input class="form-control mb-3 js-new-poster-responsibly-person" type="text" name="text" placeholder="Mas'ul">
             <select class="form-control mb-3 js-new-poster-work-hours-select" name="" id="">
               <option value="all" disabled selected>Ish vaqti</option>
               <option value="9:00-18:00">9:00-18:00</option>
@@ -118,7 +107,7 @@
               <option value="Moslashuvchan">Moslashuvchan</option>
             </select>
             <input required class="form-control mb-3 js-new-poster-salary" type="text" name="text" placeholder="Minimal maosh">
-            <textarea class="form-control js-new-poster-more-info">Batafsil</textarea>
+            <textarea class="form-control w-100 js-new-poster-more-info" placeholder="Batafsil"></textarea>
             <div class="modal-footer d-flex justify-content-center">
               <button type="submit" class="btn btn-primary">Yuborish</button>
             </div>
@@ -130,34 +119,34 @@
 
 
   <!-- Modal -->
-  <div class="modal fade" id="staticBackdropp" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal fade js-item-poster-modal" id="staticBackdropp" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title h1" id="staticBackdropLabel">E'lon nomi</h5>
+          <h5 class="modal-title h1 js-item-poster-heading" id="staticBackdropLabel">E'lon nomi</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <div class="w-50 d-flex justify-content-between">
-            <p>Bekorchilar LTD</p>
-            <p>Toshkent</p>
+            <p class="js-item-poster-firm-name">Bekorchilar LTD</p>
+            <p class="js-item-poster-region-more">Toshkent</p>
           </div>
-          <p>HTML,CSS,Bootstrap,React,Javascript</p>
+          <p class="js-item-poster-technologies-more">HTML,CSS,Bootstrap,React,Javascript</p>
           <div class="mb-3">
-            <a class="mr-5" href="#" target="_blank">Telegram link</a>
-            <a href="tel:777777777">Telefon raqami</a>
+            <a class="mr-5 js-item-poster-telegram-more" href="#" target="_blank">Telegram link</a>
+            <a class="js-item-poster-phone-number-more">Telefon raqami</a>
           </div>
           <div class="w-50 d-flex justify-content-between">
-            <p>Mas'ul</p>
-            <time>9:00-18:00</time>
+            <p class="js-item-poster-responsibly-person-more">Mas'ul</p>
+            <time class="js-item-poster-work-time">9:00-18:00</time>
           </div>
-          <p class="mb-4">5600so'm</p>
+          <p class="mb-4 js-item-poster-salary-more">5600so'm</p>
           <hr>
           <div>
             <h3>Batafsil</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium dignissimos quisquam id esse! Dolore, ipsa iure pariatur doloribus nesciunt animi culpa odio beatae reprehenderit ad quisquam, alias quia quo facere.</p>
+            <p class="js-item-poster-more">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium dignissimos quisquam id esse! Dolore, ipsa iure pariatur doloribus nesciunt animi culpa odio beatae reprehenderit ad quisquam, alias quia quo facere.</p>
           </div>
         </div>
       </div>

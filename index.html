@@ -21,10 +21,10 @@
           E'lon berish
         </button>
       </div>
-      <form class="form-group pb-5 d-flex" action="https://echo.htmlacademy.ru">
-        <input required class="form-control mr-2" type="text" name="technologies" placeholder="Texnologiyalar" required>
-        <select class="form-control mr-2">
-          <option value="" disabled selected>Hudud</option>
+      <form class="form-group pb-5 d-flex js-header-form" action="https://echo.htmlacademy.ru">
+        <input class="form-control mr-2 js-header-form__technology-input" type="text" name="technologies" placeholder="Texnologiyalar">
+        <select class="form-control mr-2 js-header-form__region-select">
+          <option value="all" disabled selected>Hudud</option>
           <option value="Toshkent">Toshkent shahri</option>
           <option value="ToshkentViloyati">Toshkent viloyati</option>
           <option value="Andijon">Andijon viloyati</option>
@@ -40,14 +40,14 @@
           <option value="Surxondaryo">Surxondaryo viloyati</option>
           <option value="Qoraqalpog'iston">Qoraqalpog'iston Respublikasi</option>
         </select>
-        <select class="form-control mr-2" name="" id="">
-          <option value="" disabled selected>Ish vaqti</option>
-          <option value="">9:00-18:00</option>
-          <option value="">9:00-14:00</option>
-          <option value="">13:00-18:00</option>
-          <option value="">Moslashuvchan</option>
+        <select class="form-control mr-2 js-header-form__work-hours-select" name="" id="">
+          <option value="all" selected>Ish vaqti</option>
+          <option value="9:00-18:00">9:00-18:00</option>
+          <option value="9:00-14:00">9:00-14:00</option>
+          <option value="13:00-18:00">13:00-18:00</option>
+          <option value="Moslashuvchan">Moslashuvchan</option>
         </select>
-        <input required class="form-control mr-2" type="text" name="text" placeholder="Minimal maosh" required>
+        <input class="form-control mr-2 js-header-form__salary-input" type="text" name="text" placeholder="Minimal maosh">
         <button class="btn btn-success">Qidirish</button>
       </form>
     </div>

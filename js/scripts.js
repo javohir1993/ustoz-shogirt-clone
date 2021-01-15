@@ -1,15 +1,30 @@
 var count = Number(localStorage.getItem(`count`)) || 0;
+var posters = JSON.parse(localStorage.getItem(`posters`)) || [];
+
 
 
 // DOM
 
 
+var elNewPosterForm = $_('.js-new-poster-form');
 
-var elNewPosterTemplate = $_('.js-poster-item-template').content;
+if (elNewPosterForm) {
+  var elNewPosterTitleInput = $_('.js-new-poster-title', elNewPosterForm);
+  var elNewCompanyNameInput = $_('.js-new-poster-company-name', elNewPosterForm);
+  var elNewTechnologiesInput = $_('.js-new-poster-technology', elNewPosterForm);
+  var elNewTelegramInput = $_('.js-new-poster-telegram', elNewPosterForm);
+  var elNewPhoneInput = $_('.js-new-poster-phone-number', elNewPosterForm);
+  var elNewRegionSelect = $_('.js-new-poster-region-select', elNewPosterForm);
+  var elNewResponsiblePersonInput = $_('.js-new-poster-responsibly-person', elNewPosterForm);
+  var elNewWorkHoursSelect = $_('.js-new-poster-work-hours-select', elNewPosterForm);
+  var elNewMinSalaryInput = $_('.js-new-poster-salary', elNewPosterForm);
+  var elNewMoreInput = $_('.js-new-poster-more-info', elNewPosterForm);
+}
+
 var elResultsList = $_('.js-results-list');
+var elNewPosterTemplate = $_('.js-poster-item-template').content;
 
 // E'lonlarni saqlab boradigan array:
-var posters = JSON.parse(localStorage.getItem(`posters`)) || [];
 
 var displayPosters = function (posts = posters) {
   var newPostersFragment = document.createDocumentFragment();
@@ -33,27 +48,43 @@ displayPosters();
 localStorage.setItem('posters', JSON.stringify(posters));
 
 
-// Yangi e'lon qo'shish modali:
+// Bosh sahifaning e'lonlarni qidirish bo'yicha filterlash:
+var elHeaderForm = $_('.js-header-form');
+var elHeaderTechnologyInput = $_('.js-header-form__technology-input');
+var elHeaderRegionSelect = $_('.js-header-form__region-select');
+var elHeaderWorkHoursSelect = $_('.js-header-form__work-hours-select');
+var elHeaderFormSalaryInput = $_('.js-header-form__salary-input');
 
-var elNewPosterForm = $_('.js-new-poster-form');
+// Bosh sahifaning e'lonlarni qidirish formasining tuzilishi:
+elHeaderForm.addEventListener('submit', function(evt){
+  evt.preventDefault();
 
-if (elNewPosterForm) {
-  var elNewPosterTitleInput = $_('.js-new-poster-title', elNewPosterForm);
-  var elNewCompanyNameInput = $_('.js-new-poster-company-name', elNewPosterForm);
-  var elNewTechnologiesInput = $_('.js-new-poster-technology', elNewPosterForm);
-  var elNewTelegramInput = $_('.js-new-poster-telegram', elNewPosterForm);
-  var elNewPhoneInput = $_('.js-new-poster-phone-number', elNewPosterForm);
-  var elNewRegionSelect = $_('.js-new-poster-region-select', elNewPosterForm);
-  var elNewResponsiblePersonInput = $_('.js-new-poster-responsibly-person', elNewPosterForm);
-  var elNewWorkHoursSelect = $_('.js-new-poster-work-hours-select', elNewPosterForm);
-  var elNewMinSalaryInput = $_('.js-new-poster-salary', elNewPosterForm);
-  var elNewMoreInput = $_('.js-new-poster-more-info', elNewPosterForm);
-}
+
+  var headerTechnologyValue = elHeaderTechnologyInput.value;
+  var headerRegionSelectValue = elHeaderRegionSelect.value;
+  var headerWorkHoursSelectValue = elHeaderWorkHoursSelect.value;
+  var headerSalaryInputValue = elHeaderFormSalaryInput.value;
+
+  var headerTechnologyValueRegExp = new RegExp(headerTechnologyValue, 'gi');
+  var headerSalaryRegExp = new RegExp(headerSalaryInputValue, 'gi');
+
+  var headerFilterPosters = posters.filter(function (poster) {
+    var headerRegionSelectValueDisebled = headerRegionSelectValue === `all` || poster.region.includes(headerRegionSelectValue);
+    var headerWorkHoursSelectValueDisabled = headerWorkHoursSelectValue === `all` || poster.work_hours.includes(headerWorkHoursSelectValue);
+    return poster.technologies.match(headerTechnologyValueRegExp) && poster.min_salary.match(headerSalaryRegExp) && headerRegionSelectValueDisebled && headerWorkHoursSelectValueDisabled;
+  })
+
+  elResultsList.innerHTML = '';
+  displayPosters(headerFilterPosters);
+
+  if (headerFilterPosters === []){
+    alert(`Bunday ma'lumot topilmadi big'atan`);
+  }
+
+});
 
 
 // Yangi e'lon qo'shish modalidagi formaga quloq solamiz:
-
-
 elNewPosterForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
   // console.log(`submit bo'ldi`);
@@ -105,7 +136,6 @@ elNewPosterForm.addEventListener('submit', function(evt) {
 
 
 // Bosh sahifadagi har bir e'longa o'ziga mos bo'lgan ma'lumotlarni modalga chiqarish:
-
 elResultsList.addEventListener('click', function(evt){
   // console.log(evt.target)
 
@@ -152,22 +182,3 @@ elResultsList.addEventListener('click', function(evt){
 //   bookmarkedMovies.splice(index, 1);
 //   updateLocalBookmarks();
 // };
-
-
-
-// // Bosh sahifaning e'lonlarni qidirish bo'yicha code lari:
-// var elForm = $_('.formaningClassi');
-// var elTechnologyInput = $_('.texnologiyaInputClassi');
-// var elTerritorySelect = $_('.territoriyaSelectClassi');
-// var elWorkHoursSelect = $_('.workHoursSelectClassi');
-// var elMinSalary = $_('.elMinSalaryClassi');
-
-// // Bosh sahifaning e'lonlarni qidirish formasining tuzilishi:
-// elForm.addEventListener('submit', function(evt){
-//   evt.preventDefault();
-
-//   var texnologiyaInputValue = eltexnologiyaInput.value;
-//   var minSalaryValue = elMinSalary.value;
-
-
-// });

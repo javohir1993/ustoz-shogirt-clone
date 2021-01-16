@@ -57,15 +57,17 @@ localStorage.setItem('posters', JSON.stringify(posters));
 
 // Bosh sahifaning e'lonlarni qidirish bo'yicha filterlash:
 var elHeaderForm = $_('.js-header-form');
-var elHeaderTechnologyInput = $_('.js-header-form__technology-input');
-var elHeaderRegionSelect = $_('.js-header-form__region-select');
-var elHeaderWorkHoursSelect = $_('.js-header-form__work-hours-select');
-var elHeaderFormSalaryInput = $_('.js-header-form__salary-input');
+if (elHeaderForm) {
+  var elHeaderTechnologyInput = $_('.js-header-form__technology-input', elHeaderForm);
+  var elHeaderRegionSelect = $_('.js-header-form__region-select', elHeaderForm);
+  var elHeaderWorkHoursSelect = $_('.js-header-form__work-hours-select', elHeaderForm);
+  var elHeaderFormSalaryInput = $_('.js-header-form__salary-input', elHeaderForm);
+}
 
 // Bosh sahifaning e'lonlarni qidirish formasining tuzilishi:
 elHeaderForm.addEventListener('submit', function(evt){
   evt.preventDefault();
-
+  // console.log('submit boldi');
 
   var headerTechnologyValue = elHeaderTechnologyInput.value;
   var headerRegionSelectValue = elHeaderRegionSelect.value;
@@ -76,18 +78,23 @@ elHeaderForm.addEventListener('submit', function(evt){
   var headerSalaryRegExp = new RegExp(headerSalaryInputValue, 'gi');
 
   var headerFilterPosters = posters.filter(function (poster) {
-    var headerRegionSelectValueDisebled = headerRegionSelectValue === `all` || poster.region.includes(headerRegionSelectValue);
-    var headerWorkHoursSelectValueDisabled = headerWorkHoursSelectValue === `all` || poster.work_hours.includes(headerWorkHoursSelectValue);
-    return poster.technologies.match(headerTechnologyValueRegExp) && poster.min_salary.match(headerSalaryRegExp) && headerRegionSelectValueDisebled && headerWorkHoursSelectValueDisabled;
+    var headerRegionSelectValueIncludes = headerRegionSelectValue === `all` || poster.region.includes(headerRegionSelectValue);
+    var headerWorkHoursSelectValueIncludes = headerWorkHoursSelectValue === `all` || poster.work_hours.includes(headerWorkHoursSelectValue);
+    return poster.technologies.match(headerTechnologyValueRegExp) && poster.min_salary.match(headerSalaryRegExp) && headerRegionSelectValueIncludes && headerWorkHoursSelectValueIncludes;
   })
+  console.log(headerFilterPosters);
 
-  elResultsList.innerHTML = '';
-  displayPosters(headerFilterPosters);
-
+  if (headerFilterPosters.length === 0) {
+    elResultsList.innerHTML = '';
+    alert(`Siz qidirgan ma'lumot topilmadi.`)
+  } else {
+    elResultsList.innerHTML = '';
+    displayPosters(headerFilterPosters);
+  }
 });
 
 
-// Yangi e'lon qo'shish modalidagi formaga quloq solamiz:
+// Yangi e'lon qo'shish modalidagi formaning ishlash code lari:
 elNewPosterForm.addEventListener('submit', function(evt) {
   evt.preventDefault();
   // console.log(`submit bo'ldi`);

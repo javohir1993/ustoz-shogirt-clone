@@ -5,3 +5,54 @@ body {
 .dark {
   background-color: rgb(63, 62, 62);
 }
+.site-header{
+  background-image: url('../img/Triangle.svg');
+  background-repeat: no-repeat;
+  background-size: 1440px 160px;
+  background-position: center top;
+  padding-top: 44px;
+  padding-bottom: 30px;
+
+}
+.bg-color{
+  width: 48px;
+  height: 24px;
+  border: none;
+  padding: 0;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 5px;
+  outline: none;
+  transition: 1s  ease all;
+}
+.bg-color:focus{
+  outline: none;
+}
+.bg-color__span{
+  width: 14px;
+  height: 14px;
+  background: #5964E0;
+  border-radius: 50%;
+  transition: 0.5s  ease all;
+}
+.body-color{
+  background-color: rgba(18, 23, 33);
+  color: #fff;
+}
+.body-color .modal-content{
+  background-color: rgba(18, 23, 33);
+  color: #fff;
+}
+.mar-span{
+  margin-left: 25px;
+}
+
+.poster-item {
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.poster-item:hover {
+  box-shadow: rgba(49, 81, 167, 0.1) 0px 14px 12px;
+  transform: scale(1.2);
+}

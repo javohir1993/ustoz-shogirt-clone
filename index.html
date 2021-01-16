@@ -9,22 +9,38 @@
 </head>
 <body class="body">
 
-  <!-- <button class="toggle-button p-5" type="button"></button> -->
-
-  <header class="site-header bg-primary">
+  <!-- HEADER -->
+  <header class="site-header">
     <div class="container">
-      <div class="d-flex align-items-center justify-content-between pt-3 mb-4">
-        <a class="d-inline-block" href="#">
-          <img class="d-block" src="img/devjobs.svg" alt="site logo" width="115" height="32">
+      <div class="d-flex">
+        <a class="d-block" href="#">
+          <img class="d-block" src="img/devjobs.svg" alt="site logo">
         </a>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-          E'lon berish
-        </button>
+
+        <div class="d-flex align-items-center ml-auto">
+          <img class="mr-3" src="img/light.svg" alt="light" width="20" height="18">
+
+          <button class="bg-color" type="button">
+            <span class="bg-color__span d-block"></span>
+          </button>
+
+          <img class="ml-3" src="img/morn.svg" alt="morn" width="12" height="12">
+        </div>
       </div>
-      <form class="form-group pb-5 d-flex js-header-form" action="https://echo.htmlacademy.ru">
-        <input class="form-control mr-2 js-header-form__technology-input" type="text" name="technologies" placeholder="Texnologiyalar">
-        <select class="form-control mr-2 js-header-form__region-select">
-          <option value="all" disabled selected>Hudud</option>
+
+      <button type="button" class="btn btn-success d-block ml-auto mt-3" data-toggle="modal" data-target="#staticBackdrop">
+        E'lon berish
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <div class="container">
+      <form class="form-group pb-5 d-flex js-header-form flex-wrap justify-content-center" action="https://echo.htmlacademy.ru">
+        <input class="form-control mr-2 mt-1 js-header-form__technology-input header-form__technology-input" type="text" name="technologies" placeholder="Texnologiyalar">
+        <select class="form-control mr-2 mt-1 js-header-form__region-select header-form__region-select">
+          <option value="hudud" disabled selected>Hudud</option>
           <option value="Toshkent">Toshkent shahri</option>
           <option value="ToshkentViloyati">Toshkent viloyati</option>
           <option value="Andijon">Andijon viloyati</option>
@@ -40,31 +56,28 @@
           <option value="Surxondaryo">Surxondaryo viloyati</option>
           <option value="Qoraqalpog'iston">Qoraqalpog'iston Respublikasi</option>
         </select>
-        <select class="form-control mr-2 js-header-form__work-hours-select" name="" id="">
+        <select class="form-control mr-2 mt-1 js-header-form__work-hours-select header-form__work-hours-select" name="" id="">
           <option value="all" selected>Ish vaqti</option>
           <option value="9:00-18:00">9:00-18:00</option>
           <option value="9:00-14:00">9:00-14:00</option>
           <option value="13:00-18:00">13:00-18:00</option>
           <option value="Moslashuvchan">Moslashuvchan</option>
         </select>
-        <input class="form-control mr-2 js-header-form__salary-input" type="text" name="text" placeholder="Minimal maosh">
-        <button class="btn btn-success">Qidirish</button>
+        <input class="form-control mr-2 mt-1 js-header-form__salary-input header-form__salary-input" type="text" name="text" placeholder="Minimal maosh">
+        <button class="btn btn-primary mt-1" type="submit">Qidirish</button>
       </form>
     </div>
-  </header>
-
-  <main>
-    <h1 class="sr-only">E'lonlar</h1>
-    <section>
-      <div class="container">
-        <ul class="js-results-list m-0 p-0 list-unstyled d-flex justify-content-center flex-wrap">
-        </ul>
-      </div>
+    <section class="d-flex justify-content-center">
+      <h1 class="sr-only">E'lonlar</h1>
+      <ul class="js-results-list results-list m-0 mx-4 p-0 d-flex flex-wrap">
+      </ul>
     </section>
   </main>
 
 
-  <!-- Modal -->
+  <!-- MODALS -->
+
+  <!-- ADD NEW POSTER MODAL -->
   <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
@@ -117,8 +130,7 @@
     </div>
   </div>
 
-
-  <!-- Modal -->
+  <!-- LIST ITEM MODAL -->
   <div class="modal fade js-item-poster-modal" id="staticBackdropp" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -154,13 +166,14 @@
   </div>
 
 
-  <!-- Template Results -->
+  <!-- TEMPLATES -->
 
+  <!-- FOR RESULT LIST TEMPLATE -->
   <template class="js-poster-item-template">
-    <li class="w-25 p-3 mr-5 mb-5 border border-dark">
-      <div class="d-flex justify-content-between mb-2">
-        <span>N soat oldin</span>
-        <time class="js-poster-item-time" datetime="">9:00-18:00</time>
+    <li class="poster-item p-3 mb-5 border border-dark list-group">
+      <div class="poster-hour justify-content-between mb-2">
+        <span class="poster-hours-ago">N soat oldin:</span>
+        <time class="js-poster-item-time poster-item-time" datetime="">9:00-18:00</time>
       </div>
       <a class="" href="#staticBackdropp" data-toggle="modal" data-target="">
         <h2 class="js-poster-item-title">E'lon nomi</h2>

@@ -1,10 +1,17 @@
 var count = Number(localStorage.getItem(`count`)) || 0;
 var posters = JSON.parse(localStorage.getItem(`posters`)) || [];
 
+var elToggleColor = $_('.bg-color');
+var elBody = $_('body');
+var elSpan = $_('.bg-color__span');
+elToggleColor.addEventListener('click', function (){
+  elBody.classList.toggle('body-color');
+  elSpan.classList.toggle('mar-span');
+  // console.log('ishladi')
+});
 
 
 // DOM
-
 
 var elNewPosterForm = $_('.js-new-poster-form');
 
@@ -74,11 +81,11 @@ elHeaderForm.addEventListener('submit', function(evt){
     return poster.technologies.match(headerTechnologyValueRegExp) && poster.min_salary.match(headerSalaryRegExp) && headerRegionSelectValueDisebled && headerWorkHoursSelectValueDisabled;
   })
 
-  elResultsList.innerHTML = '';
-  displayPosters(headerFilterPosters);
-
-  if (headerFilterPosters === []){
+  if (headerFilterPosters.length === 0) {
     alert(`Bunday ma'lumot topilmadi big'atan`);
+  } else {
+    elResultsList.innerHTML = '';
+    displayPosters(headerFilterPosters);
   }
 
 });
@@ -145,7 +152,7 @@ elResultsList.addEventListener('click', function(evt){
     var posterIdItem = posters.find(function (poster) {
       // console.log(poster);
       return Number(evt.target.dataset.id) === poster.id;
-    })
+    });
     // console.log(posterIdItem);
     var showMoreInfoItemPoster = $_('.js-item-poster-modal');
 
@@ -163,22 +170,3 @@ elResultsList.addEventListener('click', function(evt){
     $_('.js-item-poster-more', showMoreInfoItemPoster).textContent = posterIdItem.more_info;
   }
 });
-
-
-
-// var bookmarkedMovies = JSON.parse(localStorage.getItem('bookmarkedMovies')) || [];
-
-// var updateLocalBookmarks = function () {
-//   localStorage.setItem('bookmarkedMovies', JSON.stringify(bookmarkedMovies));
-// };
-
-// var addToBookmarks = function (movie) {
-//   bookmarkedMovies.push(movie);
-//   updateLocalBookmarks();
-// };
-
-// var removeFromBookmarks = function (index) {
-//   // bu yerda findIndex bilan indeksi topilgani yaxshi. ID qabul qilib oladi
-//   bookmarkedMovies.splice(index, 1);
-//   updateLocalBookmarks();
-// };

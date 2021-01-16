@@ -48,11 +48,92 @@ body {
 }
 
 .poster-item {
+  width: 240px;
   transition: 0.3s ease;
   cursor: pointer;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .poster-item:hover {
   box-shadow: rgba(49, 81, 167, 0.1) 0px 14px 12px;
   transform: scale(1.2);
+}
+
+.poster-item-time {
+  white-space: nowrap;
+}
+
+.poster-hours-ago {
+  white-space: nowrap;
+}
+
+.poster-hour {
+  display: flex;
+}
+
+.header-form__technology-input {
+  width: 150px;
+}
+.header-form__region-select {
+  width: 150px;
+}
+.header-form__work-hours-select {
+  width: 150px;
+}
+.header-form__salary-input {
+  width: 150px;
+}
+
+@media only screen and (max-width: 991px) {
+  .poster-item {
+    width: 313px;
+  }
+}
+@media only screen and (max-width: 780px) {
+  .poster-item {
+    max-width: 240px;
+  }
+  .poster-item:nth-child(even) {
+    margin-right: 0;
+  }
+  .poster-hours-ago {
+    display: block;
+  }
+}
+@media only screen and (max-width: 768px) {
+ /* .form-group {
+   /* width: 350px; */
+   flex-wrap: wrap;
+   justify-content: center;
+   /* margin-left: auto;
+   margin-right: auto; */
+ } */
+}
+@media only screen and (max-width: 573px) {
+  .poster-item {
+    max-width: 200px;
+  }
+  .poster-hour {
+    display: block;
+  }
+}
+@media only screen and (max-width: 493px) {
+  .results-list {
+    justify-content: center;
+  }
+
+  .poster-item {
+    max-width: 330px;
+    margin: 0;
+  }
+  .poster-hour {
+    display: flex;
+  }
+}
+@media only screen and (max-width: 343px) {
+  .poster-item {
+    max-width: 300px;
+    margin: 0;
+  }
 }

@@ -81,12 +81,8 @@ elHeaderForm.addEventListener('submit', function(evt){
     return poster.technologies.match(headerTechnologyValueRegExp) && poster.min_salary.match(headerSalaryRegExp) && headerRegionSelectValueDisebled && headerWorkHoursSelectValueDisabled;
   })
 
-  if (headerFilterPosters.length === 0) {
-    alert(`Bunday ma'lumot topilmadi big'atan`);
-  } else {
-    elResultsList.innerHTML = '';
-    displayPosters(headerFilterPosters);
-  }
+  elResultsList.innerHTML = '';
+  displayPosters(headerFilterPosters);
 
 });
 

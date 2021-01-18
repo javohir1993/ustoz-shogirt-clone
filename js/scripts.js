@@ -82,7 +82,7 @@ elHeaderForm.addEventListener('submit', function(evt){
     var headerWorkHoursSelectValueIncludes = headerWorkHoursSelectValue === `all` || poster.work_hours.includes(headerWorkHoursSelectValue);
     return poster.technologies.match(headerTechnologyValueRegExp) && poster.min_salary.match(headerSalaryRegExp) && headerRegionSelectValueIncludes && headerWorkHoursSelectValueIncludes;
   })
-  console.log(headerFilterPosters);
+  // console.log(headerFilterPosters);
 
   if (headerFilterPosters.length === 0) {
     elResultsList.innerHTML = '';
@@ -130,17 +130,18 @@ elNewPosterForm.addEventListener('submit', function(evt) {
   elResultsList.innerHTML = '';
   displayPosters();
 
-  elNewPosterTitleInput.value = '';
-  elNewCompanyNameInput.value = '';
-  elNewTechnologiesInput.value = '';
-  elNewTelegramInput.value = '';
-  elNewPhoneInput.value = '';
-  elNewResponsiblePersonInput.value = '';
-  elNewMinSalaryInput.value = '';
-  elNewMoreInput.value = '';
-  elNewRegionSelect.value = '';
-  elNewWorkHoursSelect.value = '';
+  // elNewPosterTitleInput.value = '';
+  // elNewCompanyNameInput.value = '';
+  // elNewTechnologiesInput.value = '';
+  // elNewTelegramInput.value = '';
+  // elNewPhoneInput.value = '';
+  // elNewResponsiblePersonInput.value = '';
+  // elNewMinSalaryInput.value = '';
+  // elNewMoreInput.value = '';
+  // elNewRegionSelect.value = '';
+  // elNewWorkHoursSelect.value = '';
 
+  elNewPosterForm.reset();
   alert(`E'loningiz muvaffaqiyatli qo'shildi. Bosh sahifaga o'tib ko'rishingiz mumkin🥳`);
 });
 
